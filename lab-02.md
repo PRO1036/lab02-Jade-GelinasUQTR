@@ -28,8 +28,13 @@ plastic_waste \<- read_csv(“data/plastic-waste.csv”)
 ### Exercise 1
 
 ``` r
-# insert code here
+# ggplot(data = plastic_waste, aes(x = plastic_waste_per_cap)) +
+  geom_histogram(binwidth = 0.2)
 ```
+
+    ## geom_bar: na.rm = FALSE, orientation = NA
+    ## stat_bin: binwidth = 0.2, bins = NULL, na.rm = FALSE, orientation = NA, pad = FALSE
+    ## position_stack
 
 ### Exercise 2
 
