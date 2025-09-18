@@ -152,5 +152,26 @@ Réponse à la question…
 Recréez la visualisation:
 
 ``` r
-# insert code here
+plastic_waste_coastal <- plastic_waste %>% 
+mutate(coastal_pop_prop = coastal_pop / total_pop) %>%
+filter(plastic_waste_per_cap <3)
+ggplot(plastic_waste_coastal,
+       mapping = aes(x = coastal_pop_prop,
+                     y = plastic_waste_per_cap,
+                     colour = continent)) +
+  geom_point() +
+  labs(title = "Quantité de déchets plastiques vs Proportion de la population côtière",
+       subtitle = "Selon le continent",
+       x = "Proportion de la population côtière (Coastal / total population)",y= "Nombre de déchets de plastiques par habitant", color= "continent")+
+geom_smooth()
 ```
+
+    ## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'
+
+    ## Warning: Removed 10 rows containing non-finite outside the scale range
+    ## (`stat_smooth()`).
+
+    ## Warning: Removed 10 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](lab-02_files/figure-gfm/recreate-viz-1.png)<!-- -->
