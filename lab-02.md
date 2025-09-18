@@ -51,41 +51,99 @@ ggplot(plastic_waste, aes(x = plastic_waste_per_cap,color=continent)) +
 
 ![](lab-02_files/figure-gfm/plastic-waste-density-2.png)<!-- -->
 
-Réponse à la question…
+``` r
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap,fill=continent, color=continent)) +
+  geom_density(adjust=1)
+```
 
-### Exercise 3
+![](lab-02_files/figure-gfm/plastic-waste-density-3.png)<!-- -->
+
+``` r
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap,fill=continent, color=continent)) +
+  geom_density(adjust=1,alpha=0.5)
+```
+
+![](lab-02_files/figure-gfm/plastic-waste-density-4.png)<!-- -->
+
+Réponse à la question… Parce que les directives (color et fill) sont des
+caractéristiques principales et peuvent donc être envoyés directement
+sur les variables. Ces deux directives jouent aussi sur l’esthétique du
+graphique contrairent au alpha qui sert à rendre la lecture du grapique
+plus facile lorsque que plusieurs données se chevauchent. \### Exercise
+3
 
 Boxplot:
 
 ``` r
-# insert code here
+ggplot(plastic_waste, aes(x =continent,y=plastic_waste_per_cap)) +
+  geom_boxplot()
 ```
+
+![](lab-02_files/figure-gfm/plastic-waste-boxplot-1.png)<!-- -->
 
 Violin plot:
 
 ``` r
-# insert code here
+ggplot(plastic_waste, aes(x =continent, y = plastic_waste_per_cap)) +
+  geom_violin()
 ```
 
-Réponse à la question…
+![](lab-02_files/figure-gfm/plastic-waste-violin-1.png)<!-- -->
 
-### Exercise 4
+Réponse à la question… On voit mieux la répartition de la pollution par
+habitants grâce aux violons contrairement au box plot qui se concentre
+sur la moyenne des et non la dispersion de la pollution par habitants.
+\### Exercise 4
 
 ``` r
-# insert code here
+ggplot(data = plastic_waste,
+       mapping = aes(x = plastic_waste_per_cap,
+                     y = mismanaged_plastic_waste_per_cap,
+                     color=continent
+                     )) +
+  geom_point()
 ```
+
+![](lab-02_files/figure-gfm/plastic-waste-mismanaged-1.png)<!-- -->
+
+``` r
+ggplot(data = plastic_waste,
+       mapping = aes(x = plastic_waste_per_cap,
+                     y = mismanaged_plastic_waste_per_cap,
+                     color=continent
+                     )) +
+  geom_point()+
+  facet_wrap(~continent)
+```
+
+![](lab-02_files/figure-gfm/plastic-waste-mismanaged-2.png)<!-- -->
 
 Réponse à la question…
 
 ### Exercise 5
 
 ``` r
-# insert code here
+ggplot(data = plastic_waste,
+       mapping = aes(x = plastic_waste_per_cap,
+                     y = total_pop,
+                     )) + 
+  geom_point()
 ```
 
+    ## Warning: Removed 10 rows containing missing values or values outside the scale range
+    ## (`geom_point()`).
+
+![](lab-02_files/figure-gfm/plastic-waste-population-total-1.png)<!-- -->
+
 ``` r
-# insert code here
+ggplot(data = plastic_waste,
+       mapping = aes(x = plastic_waste_per_cap,
+                     y = coastal_pop
+                     )) +
+  geom_point()
 ```
+
+![](lab-02_files/figure-gfm/plastic-waste-population-coastal-1.png)<!-- -->
 
 Réponse à la question…
 

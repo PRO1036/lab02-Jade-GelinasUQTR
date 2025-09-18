@@ -40,31 +40,49 @@ ggplot(plastic_waste, aes(x = plastic_waste_per_cap)) +
   geom_density(adjust=1)
 ggplot(plastic_waste, aes(x = plastic_waste_per_cap,color=continent)) +
   geom_density(adjust=1)
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap,fill=continent, color=continent)) +
+  geom_density(adjust=1)
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap,fill=continent, color=continent)) +
+  geom_density(adjust=1,alpha=0.5)
+
 ```
 
 Réponse à la question...
-
+Parce que les directives (color et fill) sont des caractéristiques principales et peuvent donc être envoyés directement sur les variables. Ces deux directives jouent aussi sur l'esthétique du graphique contrairent au alpha qui sert à rendre la lecture du grapique plus facile lorsque que plusieurs données se chevauchent. 
 ### Exercise 3
 
 Boxplot:
 
 ```{r plastic-waste-boxplot}
-# insert code here
+ggplot(plastic_waste, aes(x =continent,y=plastic_waste_per_cap)) +
+  geom_boxplot()
 ```
 
 Violin plot:
 
 ```{r plastic-waste-violin}
-# insert code here
+ggplot(plastic_waste, aes(x =continent, y = plastic_waste_per_cap)) +
+  geom_violin()
 ```
 
 Réponse à la question...
-
+On voit mieux la répartition de la pollution par habitants grâce aux violons contrairement au box plot qui se concentre sur la moyenne des et non la dispersion de la pollution par habitants.
 ### Exercise 4
 
-
 ```{r plastic-waste-mismanaged}
-# insert code here
+ggplot(data = plastic_waste,
+       mapping = aes(x = plastic_waste_per_cap,
+                     y = mismanaged_plastic_waste_per_cap,
+                     color=continent
+                     )) +
+  geom_point()
+ggplot(data = plastic_waste,
+       mapping = aes(x = plastic_waste_per_cap,
+                     y = mismanaged_plastic_waste_per_cap,
+                     color=continent
+                     )) +
+  geom_point()+
+  facet_wrap(~continent)
 ```
 
 Réponse à la question...
@@ -73,11 +91,19 @@ Réponse à la question...
 
 
 ```{r plastic-waste-population-total}
-# insert code here
+ggplot(data = plastic_waste,
+       mapping = aes(x = plastic_waste_per_cap,
+                     y = total_pop,
+                     )) + 
+  geom_point()
 ```
 
 ```{r plastic-waste-population-coastal}
-# insert code here
+ggplot(data = plastic_waste,
+       mapping = aes(x = plastic_waste_per_cap,
+                     y = coastal_pop
+                     )) +
+  geom_point()
 ```
 
 Réponse à la question...
