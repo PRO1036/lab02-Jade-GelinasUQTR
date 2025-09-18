@@ -36,7 +36,10 @@ plastic_waste <- read_csv("data/plastic-waste.csv")
 ### Exercise 2
 
 ```{r plastic-waste-density}
-# insert code here
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap)) +
+  geom_density(adjust=1)
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap,color=continent)) +
+  geom_density(adjust=1)
 ```
 
 Réponse à la question...
